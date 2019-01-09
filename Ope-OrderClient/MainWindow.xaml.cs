@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -21,51 +22,19 @@ namespace Ope_OrderClient
     /// </summary>
     public partial class MainWindow : Window
     {
+        ApiClient cli = new ApiClient();
+
+        ObservableCollection<Customer> customers = new ObservableCollection<Customer>();
+        ObservableCollection<Item> items = new ObservableCollection<Item>();
+        ObservableCollection<Order> orders = new ObservableCollection<Order>();
+
         public MainWindow()
         {
             InitializeComponent();
 
-            testCustomer();
-            testOrder();
-        }
-
-        private async void testCustomer()
-        {
-            ApiClient ac = new ApiClient();
-
-            List<Customer> c = await ac.GetCustomers();
-
-            Customer c2 = await ac.GetCustomerById(3);
-
-            Customer newC = new Customer();
-            newC.firstName = "Test";
-            newC.lastName = "FromC#";
-            Customer c3 = await ac.CreateCustomer(newC);
-
-            c3.firstName = "TestPatch";
-            Customer c4 = await ac.PatchCustomer(c3);
-
-            ac.DeleteCustomerById(c4.id);
-        }
-
-        private async void testOrder()
-        {
-            ApiClient ac = new ApiClient();
-
-            Customer customer = (await ac.GetCustomers())[0];
-            List<Item> items = await ac.GetItems();
-
-            List<Order> o = await ac.GetOrders();
-
-            Order o2 = await ac.GetOrderById(3);
-
-            Order newO = new Order();
-            newO.items = items;
-            newO.customer = customer;
-            Order o3 = await ac.CreateOrder(newO);
-
-            o3.paid = true;
-            Order o4 = await ac.PatchOrder(o3);
+            CustomerList.ItemsSource = customers;
+            ItemList.ItemsSource = items;
+            OrderList.ItemsSource = orders;
         }
     }
 }

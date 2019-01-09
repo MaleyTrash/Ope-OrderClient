@@ -7,6 +7,66 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <TabControl>
+            <TabItem Header="Customers">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel>
+                        <Label Content="First name:"/>
+                        <TextBox x:Name="CustomerFirstName"/>
+                        <Label Content="Last name:"/>
+                        <TextBox x:Name="CustomerLastName"/>
+                        <Label Content="Password:"/>
+                        <TextBox x:Name="CustomerPassword"/>
+                        <Button Content="New"/>
+                        <Button Content="Update"/>
+                        <Button Content="Delete"/>
+                    </StackPanel>
+                    <ListView x:Name="CustomerList" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Items">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel>
+                        <Label Content="Name:"/>
+                        <TextBox x:Name="ItemName"/>
+                        <Label Content="Price:"/>
+                        <TextBox x:Name="ItemPrice"/>
+                        <Button Content="New"/>
+                        <Button Content="Update"/>
+                        <Button Content="Delete"/>
+                    </StackPanel>
+                    <ListView x:Name="ItemList" Grid.Column="1"/> 
+                </Grid>
+            </TabItem>
+            <TabItem Header="Orders">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel>
+                        <Label Content="Item IDs (1,2,3):"/>
+                        <TextBox x:Name="OrderName"/>
+                        <Label Content="Customer ID:"/>
+                        <TextBox x:Name="OrderPrice"/>
+                        <Button Content="New"/>
+                        <Button Content="Update"/>
+                        <Button Content="Delete"/>
+                    </StackPanel>
+                    <ListView x:Name="OrderList" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
