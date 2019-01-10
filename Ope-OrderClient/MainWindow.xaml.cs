@@ -35,6 +35,30 @@ namespace Ope_OrderClient
             CustomerList.ItemsSource = customers;
             ItemList.ItemsSource = items;
             OrderList.ItemsSource = orders;
+
+            UpdateCustomers();
+            UpdateItems();
+            UpdateOrders();
+        }
+
+        public void ResetList<T>(ListView list, IEnumerable<T> data)
+        {
+            list.ItemsSource = new ObservableCollection<T>(data);
+        }
+
+        public async void UpdateCustomers()
+        {
+            ResetList(CustomerList, await cli.GetCustomers());
+        }
+
+        public async void UpdateItems()
+        {
+            ResetList(ItemList, await cli.GetItems());
+        }
+
+        public async void UpdateOrders()
+        {
+            ResetList(OrderList, await cli.GetOrders());
         }
     }
 }
