@@ -11,22 +11,25 @@
             <TabItem Header="Customers">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="142*"/>
+                        <ColumnDefinition Width="83*"/>
+                        <ColumnDefinition Width="561*"/>
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel>
+                    <StackPanel Grid.ColumnSpan="2">
+                        <Label Content="ID:"/>
+                        <TextBox x:Name="CustomerId"/>
                         <Label Content="First name:"/>
                         <TextBox x:Name="CustomerFirstName"/>
                         <Label Content="Last name:"/>
                         <TextBox x:Name="CustomerLastName"/>
                         <Label Content="Password:"/>
                         <TextBox x:Name="CustomerPassword"/>
-                        <Button Content="New"/>
-                        <Button Content="Update"/>
-                        <Button Content="Delete"/>
+                        <Button Content="New" Click="CustomerNew_Click"/>
+                        <Button Content="Update" Click="CustomerUpdate_Click"/>
+                        <Button Content="Delete" Click="CustomerDelete_Click"/>
                     </StackPanel>
-                    <ListView x:Name="CustomerList" Grid.Column="1"/>
+                    <ListView x:Name="CustomerList" MouseDoubleClick="CustomerList_Selected" Grid.Column="2"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Items">
@@ -37,15 +40,17 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel>
+                        <Label Content="ID:"/>
+                        <TextBox x:Name="ItemId"/>
                         <Label Content="Name:"/>
                         <TextBox x:Name="ItemName"/>
                         <Label Content="Price:"/>
                         <TextBox x:Name="ItemPrice"/>
-                        <Button Content="New"/>
-                        <Button Content="Update"/>
-                        <Button Content="Delete"/>
+                        <Button Content="New" Click="ItemNew_Click"/>
+                        <Button Content="Update" Click="ItemUpdate_Click"/>
+                        <Button Content="Delete" Click="ItemDelete_Click"/>
                     </StackPanel>
-                    <ListView x:Name="ItemList" Grid.Column="1"/> 
+                    <ListView x:Name="ItemList" MouseDoubleClick="ItemList_Selected" Grid.Column="1"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Orders">
@@ -56,15 +61,17 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel>
+                        <Label Content="ID:"/>
+                        <TextBox x:Name="OrderId"/>
                         <Label Content="Item IDs (1,2,3):"/>
-                        <TextBox x:Name="OrderName"/>
+                        <TextBox x:Name="OrderItemIds"/>
                         <Label Content="Customer ID:"/>
-                        <TextBox x:Name="OrderPrice"/>
-                        <Button Content="New"/>
-                        <Button Content="Update"/>
-                        <Button Content="Delete"/>
+                        <TextBox x:Name="OrderCustomerId"/>
+                        <Button Content="New" Click="OrderNew_Click"/>
+                        <Button Content="Update" Click="OrderUpdate_Click"/>
+                        <Button Content="Delete" Click="OrderDelete_Click"/>
                     </StackPanel>
-                    <ListView x:Name="OrderList" Grid.Column="1"/>
+                    <ListView x:Name="OrderList" MouseDoubleClick="OrderList_Selected" Grid.Column="1"/>
                 </Grid>
             </TabItem>
         </TabControl>
