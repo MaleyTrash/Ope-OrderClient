@@ -49,7 +49,7 @@ namespace Ope_OrderClient
         public async void UpdateCustomers()
         {
             ResetList(CustomerList, await cli.GetCustomers());
-        }
+        }   
 
         public async void UpdateItems()
         {
@@ -69,6 +69,7 @@ namespace Ope_OrderClient
             CustomerId.Text = cus.id.ToString();
             CustomerFirstName.Text = cus.firstName;
             CustomerLastName.Text = cus.lastName;
+            CustomerPassword.Text = cus.password;
         }
 
         private void ItemList_Selected(object sender, RoutedEventArgs e)
@@ -103,6 +104,7 @@ namespace Ope_OrderClient
 
             i.firstName = CustomerFirstName.Text;
             i.lastName = CustomerLastName.Text;
+            i.password = CustomerPassword.Text;
 
             await cli.CreateCustomer(i);
             UpdateCustomers();
@@ -118,6 +120,7 @@ namespace Ope_OrderClient
             i.id = id;
             i.firstName = CustomerFirstName.Text;
             i.lastName = CustomerLastName.Text;
+            i.password = CustomerPassword.Text;
 
             await cli.PatchCustomer(i);
             UpdateCustomers();
