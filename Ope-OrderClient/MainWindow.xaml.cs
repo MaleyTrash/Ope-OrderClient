@@ -39,6 +39,8 @@ namespace Ope_OrderClient
             UpdateCustomers();
             UpdateItems();
             UpdateOrders();
+
+            new Login().Show();
         }
 
         public void ResetList<T>(ListView list, IEnumerable<T> data)

@@ -39,6 +39,16 @@ namespace Ope_OrderClient
             return await Execute<Customer>(req);
         }
 
+        public async Task<Customer> LoginCustomer(Customer customer)
+        {
+            var req = new RestRequest("/customers/login", Method.POST);
+
+            // hack protoze to jinak nefungovalo...
+            req.AddJsonBody(new { customer.firstName, customer.password});
+
+            return await Execute<Customer>(req);
+        }
+
         public void DeleteCustomerById(int id)
         {
             var req = new RestRequest("/customers/{id}", Method.DELETE);
